@@ -9,20 +9,20 @@ app.use(express.static('public'));
 io.sockets.on('connection', function(socket) {
     console.log("OnConnection ");
 
-    socket.on("up", function(command) {
-        console.log(command);
+    socket.on("up", function() {
+        console.log("up-command");
     });
 
-    socket.on("down", function(command) {
-        console.log(command);
+    socket.on("down", function() {
+        console.log("down-command");
     });
 
-    socket.on("left", function(command) {
-        console.log(command);
+    socket.on("left", function() {
+        console.log("left-command");
     });
 
-    socket.on("right", function(command) {
-        console.log(command);
+    socket.on("right", function() {
+        console.log("right-command");
     });
 
 });
