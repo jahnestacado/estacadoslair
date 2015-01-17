@@ -1,0 +1,50 @@
+#arrow-keys {
+    width: 150px;
+    height:110px;
+    float:right;
+    right: 20px;
+    top: 20px;
+    position: relative;
+}
+
+#left {
+    position: absolute;
+    width:50px;
+    height:30px;
+    margin:auto;
+    left:0;
+    bottom:0;
+    top:0;
+}
+
+#right {
+    position: absolute;
+    width:50px;
+    height:30px;
+    margin: auto;
+    right:0;
+    bottom:0;
+    top:0;
+}
+
+#up {
+    position: absolute;
+    width:50px;
+    height:30px;
+    top:0;
+    margin:auto;
+    left:0;
+    right:0;
+
+}
+
+#down {
+    position: absolute;
+    width:50px;
+    height:30px;
+    bottom:0;
+    margin: auto;
+    left:0;
+    right:0
+
+}
