@@ -21,9 +21,34 @@ var min_X_Axis = 0.15;
 var Y_Axis_Value = 0.10;
 var X_Axis_Value = 0.187;
 
-//Set starting position
-piBlaster.setPwm(Y_AXIS_PIN, Y_Axis_Value);
-piBlaster.setPwm(X_AXIS_PIN, X_Axis_Value);
+//Served folders
+app.use(express.static('public'));
+
+io.sockets.on('connection', function(socket) {
+    console.log("OnConnection ");
+   
+    //Set starting position
+    piBlaster.setPwm(Y_AXIS_PIN, Y_Axis_Value);
+    piBlaster.setPwm(X_AXIS_PIN, X_Axis_Value);
+
+    socket.on("movement-command", function(command) {
+        switch (command) {
+            case "up" :
+                moveServoUp();
+                break;
+            case "down":
+                moveServoDown();
+                break;
+            case "left":
+                moveServoLeft();
+                break;
+            case "right":
+                moveServoRight();
+                break;
+        }
+    });
+
+});
 
 function roundTo2Decimals(number) {
     return Math.round(number * 100) / 100;
@@ -56,27 +81,3 @@ function moveServoRight() {
         piBlaster.setPwm(X_AXIS_PIN, roundTo2Decimals(X_Axis_Value));
     }
 }
-
-app.use(express.static('public'));
-
-io.sockets.on('connection', function(socket) {
-    console.log("OnConnection ");
-
-    socket.on("movement-command", function(command) {
-        switch (command) {
-            case "up" :
-                moveServoUp();
-                break;
-            case "down":
-                moveServoDown();
-                break;
-            case "left":
-                moveServoLeft();
-                break;
-            case "right":
-                moveServoRight();
-                break;
-        }
-    });
-
-});
