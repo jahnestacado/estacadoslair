@@ -4,7 +4,7 @@
 
     function sendCommand(command, shouldContinue) {
         setTimeout(function() {
-            socket.emit(command);
+            socket.emit("movement-command", command);
             if (shouldContinue()) {
                 sendCommand(command, shouldContinue);
             }

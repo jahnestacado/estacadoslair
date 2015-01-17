@@ -62,24 +62,21 @@ app.use(express.static('public'));
 io.sockets.on('connection', function(socket) {
     console.log("OnConnection ");
 
-    socket.on("up", function() {
-        console.log("up-command");
-        moveServoUp();
-    });
-
-    socket.on("down", function() {
-        console.log("down-command");
-        moveServoDown();
-    });
-
-    socket.on("left", function() {
-        console.log("left-command");
-        moveServoLeft();
-    });
-
-    socket.on("right", function() {
-        console.log("right-command");
-        moveServoRight();
+    socket.on("movement-command", function(command) {
+        switch (command) {
+            case "up" :
+                moveServoUp();
+                break;
+            case "down":
+                moveServoDown();
+                break;
+            case "left":
+                moveServoLeft();
+                break;
+            case "right":
+                moveServoRight();
+                break;
+        }
     });
 
 });
