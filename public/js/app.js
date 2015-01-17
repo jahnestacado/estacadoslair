@@ -1,5 +1,5 @@
 (function($) {
-    var socket = io.connect('http://localhost:8089');
+    var socket = io.connect("http://estacadoslair.com/");
     var isSendingCommand;
 
     function sendCommand(command, shouldContinue) {
