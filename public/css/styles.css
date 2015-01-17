@@ -1,10 +1,11 @@
 #arrow-keys {
+    position: absolute;
     width: 150px;
     height:110px;
     float:right;
-    right: 20px;
-    top: 20px;
-    position: relative;
+    right: 150px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #left {
@@ -35,7 +36,6 @@
     margin:auto;
     left:0;
     right:0;
-
 }
 
 #down {
@@ -46,5 +46,11 @@
     margin: auto;
     left:0;
     right:0
+}
 
+#camera-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
