@@ -30,24 +30,48 @@ piBlaster.setPwm(X_AXIS_PIN, X_Axis_Value);
 //Served folders
 app.use(express.static('public'));
 
+var activeClientId;
+
 io.sockets.on('connection', function(socket) {
     console.log("OnConnection ");
 
+    socket.on("movement-command", function(command, id) {
+        
+        //If there is no activeClientId then set one
+        if (!activeClientId) {
+            activeClientId = id;
+        }
+        
+        //Allow access to camera controls only for client with active id
+        if (activeClientId === id) {
+            
+            //Lock all client controls apart from client with the active id
+            socket.broadcast.emit("lock-controls");
+           
+            switch (command) {
+                case "up" :
+                    moveServoUp();
+                    break;
+                case "down":
+                    moveServoDown();
+                    break;
+                case "left":
+                    moveServoLeft();
+                    break;
+                case "right":
+                    moveServoRight();
+                    break;
+            }
+        }
 
-    socket.on("movement-command", function(command) {
-        switch (command) {
-            case "up" :
-                moveServoUp();
-                break;
-            case "down":
-                moveServoDown();
-                break;
-            case "left":
-                moveServoLeft();
-                break;
-            case "right":
-                moveServoRight();
-                break;
+    });
+    
+    socket.on("inactivate-clientId", function(id) {
+        if (activeClientId === id) {
+            setTimeout(function() {
+                activeClientId = undefined;
+                socket.broadcast.emit("unlock-controls");
+            }, 5000);
         }
     });
 
