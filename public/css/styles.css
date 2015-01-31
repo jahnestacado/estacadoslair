@@ -10,8 +10,8 @@
 
 #left {
     position: absolute;
-    width:50px;
-    height:30px;
+    width:41%;
+    height:39%;
     margin:auto;
     left:0;
     bottom:0;
@@ -20,8 +20,8 @@
 
 #right {
     position: absolute;
-    width:50px;
-    height:30px;
+    width:41%;
+    height:39%;
     margin: auto;
     right:0;
     bottom:0;
@@ -30,8 +30,8 @@
 
 #up {
     position: absolute;
-    width:50px;
-    height:30px;
+    width:35%;
+    height:47%;
     top:0;
     margin:auto;
     left:0;
@@ -40,8 +40,8 @@
 
 #down {
     position: absolute;
-    width:50px;
-    height:30px;
+    width:35%;
+    height:47%;
     bottom:0;
     margin: auto;
     left:0;
